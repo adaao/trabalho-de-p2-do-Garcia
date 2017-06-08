@@ -15,24 +15,24 @@ share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
 
 Usuario
     nome Text
-    UniqueEmail email
-    telefone Text sqltype=varchar(11)
+    email Text
     senha Text
+    UniqueEmail email
     deriving Show
 
 Cliente
     nomeCliente Text
     telefoneCliente Text sqltype=varchar(11)
-    UniqueEmail email
-    cep Text --resolver
-    nroEndeteco Int
+--  Informações sobre o endereço -> será melhorado futuramente
+    rua Text
+    numero Int
     complemento Text
+--    cep Text -> para um proximo release
     deriving Show
     
 Venda
     usuatioid UsuarioId
     clienteid ClienteId
-    dataVenda Date
     vendaPaga Bool
     deriving Show
 
@@ -47,33 +47,8 @@ ProdutosVendidos
     qtProduto Int
     vlVenda Double
     deriving Show
-    
-Cep
-    UniqueCep cep
-    logradouro Text
-    estadoid EstadoId
-    cidadeid CidadeId
-    deriving Show
 
 
--- Tabelas do professor
-Departamento
-   nome Text
-   sigla Text sqltype=varchar(3)
-   deriving Show
-
-Pessoa
-   nome Text
-   idade Int
-   salario Double
-   deptoid DepartamentoId
-   deriving Show
-  
-Usuario
-   nome Text
-   email Text
-   senha Text
-   UniqueEmail email
 |]
 
 staticFiles "static"
@@ -93,8 +68,8 @@ instance Yesod Sitio where
     authRoute _ = Just LoginR
     isAuthorized LoginR _ = return Authorized
     isAuthorized HomeR _ = return Authorized
-    isAuthorized UsuarioR _ = isAdmin
-    isAuthorized AdminR _ = isAdmin
+    --isAuthorized UsuarioR _ = isAdmin
+    --isAuthorized AdminR _ = isAdmin
     isAuthorized _ _ = isUser
 {-
 

@@ -2,23 +2,13 @@
 
 sudo apt-get update
 
+sudo apt-get install gcc -y
 
+sudo apt-get install vim -y
 
-sudo apt-get install gcc
-
-
-
-sudo apt-get indtall vim
-
-
-
-sudo apt-get install lsof
-
-
+sudo apt-get install lsof -y
 
 wget -qO- http://get.haskellstack.org/ | sh
-
-
 
 #############################################
 
@@ -28,13 +18,14 @@ wget -qO- http://get.haskellstack.org/ | sh
 
 
 
-sudo apt-get install postgresql postgresql-contrib
+sudo apt-get install postgresql postgresql-contrib -y
 
 
 
-sudo apt-get install libpq-dev
+sudo apt-get install libpq-dev -y
 
-
+#instalação do git 
+sudo apt-get install git -y
 
 #porta 80 ou 443, porem sera utilizada a 3000, nGinX
 

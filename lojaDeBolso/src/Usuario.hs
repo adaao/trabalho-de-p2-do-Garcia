@@ -56,9 +56,6 @@ postLoginR :: Handler Html
 postLoginR = do
                 ((result, _), _) <- runFormPost formLogin
                 case result of
-                    FormSuccess ("root@root.com","root2") -> do
-                        setSession "_USER" "admin"
-                        redirect AdminR
                     FormSuccess (email,senha) -> do
                        temUsu <- runDB $ selectFirst [UsuarioEmail ==. email,UsuarioSenha ==. senha] []
                        case temUsu of
@@ -70,15 +67,8 @@ postLoginR = do
                                defaultLayout [whamlet| Usuário autenticado!|]
                     _ -> redirect UsuarioR
 
-getAdminR :: Handler Html
-getAdminR = defaultLayout $ do
-    [whamlet|
-        <h1>
-            Bem-vindo Rei dos Reis!!!!!!
-    |]
 
 postLogoutR :: Handler Html
 postLogoutR = do
     deleteSession "_USER"
     redirect LoginR
-
