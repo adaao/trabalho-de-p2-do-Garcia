@@ -34,6 +34,7 @@ Venda
     usuatioid UsuarioId
     clienteid ClienteId
     vendaPaga Bool
+    vlVenda Double
     deriving Show
 
 Produto
@@ -45,7 +46,7 @@ ProdutosVendidos
     vendaid VendaId
     produtoid ProdutoId
     qtProduto Int
-    vlVenda Double
+    vlProduto Double
     deriving Show
 
 
