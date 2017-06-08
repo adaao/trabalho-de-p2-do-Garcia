@@ -1,14 +1,12 @@
-{-# LANGUAGE OverloadedStrings    #-}
-{-# LANGUAGE TemplateHaskell      #-}
-{-# LANGUAGE ViewPatterns         #-}
-
-{-# OPTIONS_GHC -fno-warn-orphans #-}
+{-# LANGUAGE OverloadedStrings, QuasiQuotes,
+             TemplateHaskell, ViewPatterns #-}
+ 
 module Application where
-
 import Foundation
-import Yesod.Core
+import Yesod
+import Usuario
+import Handlers
+import Front
 
-import Add
-import Home
-
-mkYesodDispatch "App" resourcesApp
+-- Application
+mkYesodDispatch "Sitio" resourcesSitio
